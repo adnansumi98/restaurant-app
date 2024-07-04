@@ -1,0 +1,50 @@
+.fooditems-container {
+  display: flex;
+  flex-direction: row;
+  border: solid 2px #afafaf;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Roboto';
+}
+.food-mark {
+  align-items: start;
+  margin: 10px;
+}
+.food-details-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 40vw;
+}
+.food-name {
+  font-size: 16px;
+}
+.food-price {
+  font-size: 14px;
+  color: #5f5a5a;
+  font-weight: bold;
+}
+.food-description {
+  font-size: 14px;
+  color: #888585;
+}
+.quantity-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #2c9716;
+  border-radius: 25px;
+  width: 70%;
+  height: 30px;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #fff;
+}
+.quantity-button {
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.food-quantity {
+  font-size: 16px;
+}
