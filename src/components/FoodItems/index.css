@@ -7,12 +7,15 @@
   font-family: 'Roboto';
 }
 .food-mark {
-  align-items: start;
   margin: 10px;
+  border: transparent;
+  align-self: flex-start;
+  margin-right: 10px;
 }
 .food-details-container {
   display: flex;
   flex-direction: column;
+  margin-right: 10px;
   min-width: 40vw;
 }
 .food-name {
@@ -47,4 +50,26 @@
 }
 .food-quantity {
   font-size: 16px;
+}
+.food-calories {
+  font-size: 14px;
+  color: #d4b500;
+  font-weight: bold;
+  align-self: center;
+  margin-right: 10px;
+}
+.food-images {
+  width: 100px;
+  height: 100px;
+  border: transparent;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+.spinner-container {
+  height: 80vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
