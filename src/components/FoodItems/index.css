@@ -5,6 +5,7 @@
   border-radius: 10px;
   padding: 10px;
   font-family: 'Roboto';
+  list-style-type: none;
 }
 .food-mark {
   margin: 10px;

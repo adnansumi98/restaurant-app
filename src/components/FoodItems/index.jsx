@@ -1,28 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ScaleLoader } from 'react-spinners'
 import './index.css'
 
-const FoodItems = () => {
-  const [foodItems, setFoodItems] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+const FoodItems = (props) => {
+  const { isLoading, foodItems } = props
   const [quantity, setQuantity] = useState(0)
-
-  const fetchFoodItems = async () => {
-    const url = 'https://run.mocky.io/v3/2477b10c-ee18-4487-9962-1b3d073432c4'
-    const options = {
-      method: 'GET',
-    }
-    await fetch(url, options)
-      .then((response) => response.json())
-      .then(setIsLoading(true))
-      .then((data) => setFoodItems(data))
-      .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    fetchFoodItems()
-  }, [])
-
+  console.log(foodItems)
   return (
     <div>
       {isLoading ? (
