@@ -3,6 +3,10 @@ import './index.css'
 const Category = (props) => {
   const { selectedCategory, categories, setCategoryFunction } = props
 
+  const onClickCategory = (selected) => {
+    setSelectedCategory(selected)
+  }
+
   return (
     <ul className="category-container">
       {categories.map((category) => {

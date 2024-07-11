@@ -29,7 +29,7 @@
 
 @media (max-width: 768px) {
   .category-button {
-    width: 150px;
+    min-width: 160px;
   }
   .category-container {
     align-items: center;

@@ -26,21 +26,12 @@ const App = () => {
       const data = await response.json()
       const restaurantInfo = data[0]
       setRestaurantName(restaurantInfo.restaurant_name)
-      setCategory(
-        restaurantInfo.table_menu_list.map(
-          (menu_list) => menu_list.menu_category
-        )
+      const menuList = restaurantInfo.table_menu_list.map(
+        (menu_list) => menu_list.menu_category
       )
-
-      setFoodItems(
-        restaurantInfo.table_menu_list.filter((menu_list) => {
-          const filterCategory =
-            selectedCategory === '' ? category[0] : selectedCategory
-          if (menu_list.menu_category === filterCategory) {
-            return menu_list.category_dishes
-          }
-        })
-      )
+      setCategory(menuList)
+      setSelectedCategory(menuList[0])
+      setFoodItems(restaurantInfo.table_menu_list)
       setIsLoading(false)
     } catch (error) {
       console.log(error)
@@ -53,7 +44,6 @@ const App = () => {
 
   useEffect(() => {
     fetchFoodItems()
-    setSelectedCategory(category[0])
   }, [])
 
   return (
@@ -64,7 +54,11 @@ const App = () => {
         setCategoryFunction={onClickCategory}
         selectedCategory={selectedCategory}
       />
-      <FoodItems foodItems={foodItems} isLoading={isLoading} />
+      <FoodItems
+        foodItems={foodItems}
+        isLoading={isLoading}
+        selectedCategory={selectedCategory}
+      />
     </div>
   )
 }
