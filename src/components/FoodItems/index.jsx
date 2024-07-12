@@ -13,7 +13,12 @@ const FoodItems = (props) => {
       .filter((item) => item.menu_category === selectedCategory)
       .map((object) => object.category_dishes)
 
-    setfilteredFoodItems(filtered[0])
+    const quantityWithFilter = filtered[0].map((each) => ({
+      ...each,
+      quantity: 0,
+    }))
+
+    setfilteredFoodItems(quantityWithFilter)
   }, [selectedCategory])
 
   return (
@@ -44,11 +49,24 @@ const FoodItems = (props) => {
                       <button
                         type="button"
                         className="quantity-button"
-                        onClick={(event) => {
-                          console.log(event.target.value)
-                          setQuantity((count) =>
-                            count > 0 ? count - 1 : count
-                          )
+                        onClick={() => {
+                          const updatedQuantity = filteredFoodItems
+                            .filter((each) => each.dish_id === foodItem.dish_id)
+                            .map((dish) => {
+                              let quantityProp = dish.quantity
+                              if (quantityProp > 0) {
+                                quantityProp -= 1
+                              }
+                              return {
+                                ...dish,
+                                quantity: quantityProp,
+                              }
+                            })
+
+                          setfilteredFoodItems((prevState) => ({
+                            ...prevState,
+                            updatedQuantity,
+                          }))
                         }}
                       >
                         -
