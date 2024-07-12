@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ScaleLoader } from 'react-spinners'
+import { TailSpin } from 'react-loader-spinner'
 import { FoodTypeContainer, FoodTypeButton } from './styledComponent'
 import './index.css'
 
@@ -12,7 +12,7 @@ const FoodItems = (props) => {
     const filtered = foodItems
       .filter((item) => item.menu_category === selectedCategory)
       .map((object) => object.category_dishes)
-
+    
     const quantityWithFilter = filtered[0].map((each) => ({
       ...each,
       quantity: 0,
@@ -25,7 +25,16 @@ const FoodItems = (props) => {
     <div>
       {isLoading ? (
         <div className="spinner-container ">
-          <ScaleLoader />
+          <TailSpin
+            visible={true}
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
         </div>
       ) : (
         <ul className="fooditems-container">
@@ -62,7 +71,7 @@ const FoodItems = (props) => {
                                 quantity: quantityProp,
                               }
                             })
-
+                          console.log(updatedQuantity)
                           setfilteredFoodItems((prevState) => ({
                             ...prevState,
                             updatedQuantity,
@@ -75,11 +84,24 @@ const FoodItems = (props) => {
                       <button
                         className="quantity-button"
                         type="button"
-                        onClick={() =>
-                          setQuantity((count) =>
-                            count < 20 ? count + 1 : count
-                          )
-                        }
+                        onClick={() => {
+                          const updatedQuantity = filteredFoodItems
+                            .filter((each) => each.dish_id === foodItem.dish_id)
+                            .map((dish) => {
+                              let quantityProp = dish.quantity
+                              if (quantityProp > 0) {
+                                quantityProp -= 1
+                              }
+                              return {
+                                ...dish,
+                                quantity: quantityProp,
+                              }
+                            })
+                          setfilteredFoodItems((prevState) => ({
+                            ...prevState,
+                            updatedQuantity,
+                          }))
+                        }}
                       >
                         +
                       </button>
