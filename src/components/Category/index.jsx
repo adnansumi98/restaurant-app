@@ -1,11 +1,7 @@
-import './index.css'
+import "./index.css";
 
 const Category = (props) => {
-  const { selectedCategory, categories, setCategoryFunction } = props
-
-  const onClickCategory = (selected) => {
-    setSelectedCategory(selected)
-  }
+  const { selectedCategory, categories, setCategoryFunction } = props;
 
   return (
     <ul className="category-container">
@@ -22,10 +18,10 @@ const Category = (props) => {
               </button>
             )}
           </li>
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};
 
-export default Category
+export default Category;

@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { FoodTypeButton, FoodTypeContainer } from "./styledComponent";
+import Customizations from "./addons";
 import "./index.css";
 
 const FoodItems = (props) => {
   const { isLoading, foodItems, selectedCategory } = props;
 
   const [filteredFoodItems, setfilteredFoodItems] = useState([]);
-  const [foodWithQuantity, setFoodWithQuantity] = useState([]);
 
   useEffect(() => {
     const filtered = foodItems
@@ -18,18 +18,6 @@ const FoodItems = (props) => {
       setfilteredFoodItems(filtered[0]);
     }
   }, [selectedCategory, foodItems]);
-
-  useEffect(() => {
-    const dishNamesWithQuantity =
-      filteredFoodItems !== undefined
-        ? filteredFoodItems.map((each) => ({
-            name: each.dish_name,
-            quantity: 0,
-          }))
-        : [];
-    // console.log(dishNamesWithQuantity
-    setFoodWithQuantity(dishNamesWithQuantity);
-  }, [filteredFoodItems]);
 
   return (
     <div>
@@ -64,71 +52,7 @@ const FoodItems = (props) => {
                     <p className="food-description">
                       {foodItem.dish_description}
                     </p>
-                    <div className="quantity-container">
-                      <button
-                        type="button"
-                        className="quantity-button"
-                        onClick={() => {
-                          const filteredFoodItem = foodWithQuantity
-                            .filter((each) => each.name === foodItem.dish_name)
-                            .map((each) => ({
-                              name: each.name,
-                              quantity:
-                                each.quantity > 0
-                                  ? each.quantity - 1
-                                  : each.quantity,
-                            }));
-
-                          setFoodWithQuantity(
-                            foodWithQuantity.map((each) => {
-                              if (each.name === foodItem.dish_name) {
-                                return filteredFoodItem[0];
-                              } else {
-                                return each;
-                              }
-                            }),
-                          );
-                        }}
-                      >
-                        -
-                      </button>
-                      <p className="food-quantity">
-                        {foodWithQuantity !== undefined
-                          ? foodWithQuantity
-                              .filter(
-                                (each) => each.name === foodItem.dish_name,
-                              )
-                              .map((dish) => dish.quantity)
-                          : 0}
-                      </p>
-                      <button
-                        className="quantity-button"
-                        type="button"
-                        onClick={() => {
-                          const filteredFoodItem = foodWithQuantity
-                            .filter((each) => each.name === foodItem.dish_name)
-                            .map((each) => ({
-                              name: each.name,
-                              quantity:
-                                each.quantity < 20
-                                  ? each.quantity + 1
-                                  : each.quantity,
-                            }));
-
-                          setFoodWithQuantity(
-                            foodWithQuantity.map((each) => {
-                              if (each.name === foodItem.dish_name) {
-                                return filteredFoodItem[0];
-                              } else {
-                                return each;
-                              }
-                            }),
-                          );
-                        }}
-                      >
-                        +
-                      </button>
-                    </div>
+                    <Customizations addonCat={foodItem.addonCat} />
                   </div>
                   <p className="food-calories">
                     {foodItem.dish_calories + " calories"}
