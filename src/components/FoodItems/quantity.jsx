@@ -1,11 +1,21 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import cartContext from "../context/cartContext";
 
 // TODO: Create a qunatity component with react context Api
 
 const Quantity = (props) => {
-  const { fooditem } = props;
+  const { foodItem } = props;
 
+  const [foodWithQuantity, setFoodWithQuantity] = useState([]);
+
+  useEffect(() => {
+    setFoodWithQuantity((prevState) => ({
+      ...prevState,
+      [foodItem.dish_name]: { ...prevState[foodItem.dish_name], quantity: 0 },
+    }));
+  }, [foodItem]);
+
+  console.log(foodWithQuantity);
   const onClickQantityDecrease = () => {
     const filteredFoodItem = foodWithQuantity
       .filter((each) => each.name === foodItem.dish_name)
@@ -48,15 +58,14 @@ const Quantity = (props) => {
     // TODO: implement context for food with Quantity
   };
 
-  const contextSetterforCart = () => {
+  const contextSetterforaddCartItems = () => {
     // TODO: implement context for cart
   };
 
   return (
     <cartContext.Provider
       value={{
-        foodWithQuantiy,
-        setFoodWithQuantity: contextSetterforFoodWithQuantity,
+        addCartItems: contextSetterforaddCartItems,
       }}
     >
       <div className="quantity-container">
@@ -67,11 +76,10 @@ const Quantity = (props) => {
         >
           -
         </button>
-        <p className="food-quantity">
-          {foodWithQuantity !== undefined
-            ? foodWithQuantity
-                .filter((each) => each.name === foodItem.dish_name)
-                .map((dish) => dish.quantity)
+        <p className="food-quantity" onChange={contextSetterforaddCartItems}>
+          {foodWithQuantity.length !== 0 &&
+          foodWithQuantity.name === foodItem.dish_name
+            ? foodWithQuantity.quantity
             : 0}
         </p>
         <button
@@ -85,3 +93,5 @@ const Quantity = (props) => {
     </cartContext.Provider>
   );
 };
+
+export default Quantity;
