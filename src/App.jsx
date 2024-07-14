@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Category from "./components/Category";
 import FoodItems from "./components/FoodItems";
 import "./App.css";
+import { CartProvider } from "./components/context/cartContext";
 
 const App = () => {
   const [category, setCategory] = useState([]);
@@ -47,19 +48,21 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Header restaurantName={restaurantName} />
-      <Category
-        categories={category}
-        setCategoryFunction={onClickCategory}
-        selectedCategory={selectedCategory}
-      />
-      <FoodItems
-        foodItems={foodItems}
-        isLoading={isLoading}
-        selectedCategory={selectedCategory}
-      />
-    </div>
+    <CartProvider>
+      <div>
+        <Header restaurantName={restaurantName} />
+        <Category
+          categories={category}
+          setCategoryFunction={onClickCategory}
+          selectedCategory={selectedCategory}
+        />
+        <FoodItems
+          foodItems={foodItems}
+          isLoading={isLoading}
+          selectedCategory={selectedCategory}
+        />
+      </div>
+    </CartProvider>
   );
 };
 
