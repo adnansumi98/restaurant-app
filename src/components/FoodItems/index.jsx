@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import { TailSpin } from "react-loader-spinner";
-import { FoodTypeButton, FoodTypeContainer } from "./styledComponent";
-import Customizations from "./addons";
-import Quantity from "./quantity";
-import "./index.css";
+import { useEffect, useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
+import { FoodTypeButton, FoodTypeContainer } from './styledComponent';
+import Customizations from './addons';
+import Quantity from './quantity';
+import './index.css';
 
 const FoodItems = (props) => {
   const { isLoading, foodItems, selectedCategory } = props;
@@ -49,7 +49,7 @@ const FoodItems = (props) => {
                   </FoodTypeContainer>
                   <div className="food-details-container">
                     <h1 className="food-name">{foodItem.dish_name}</h1>
-                    <p className="food-price">{"SAR " + foodItem.dish_price}</p>
+                    <p className="food-price">{'SAR ' + foodItem.dish_price}</p>
                     <p className="food-description">
                       {foodItem.dish_description}
                     </p>
@@ -57,7 +57,7 @@ const FoodItems = (props) => {
                     <Customizations addonCat={foodItem.addonCat} />
                   </div>
                   <p className="food-calories">
-                    {foodItem.dish_calories + " calories"}
+                    {foodItem.dish_calories + ' calories'}
                   </p>
                   <img
                     className="food-images"
