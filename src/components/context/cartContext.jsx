@@ -1,37 +1,37 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from 'react';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [order, setOrder] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const handleQuantityChange = (dishName, quantity) => {
-    const index = order.findIndex((item) => item.name === dishName);
-
-    if (index !== -1) {
-      const newOrder = [...order];
-      newOrder[index].quantity = quantity;
-      setOrder(newOrder);
-    } else {
-      setOrder([...order, { name: dishName, quantity }]);
-    }
+  const handleQuantityChange = (itemId, newName, newPrice, newQuantity) => {
+    setCart(
+      cart.map((item) =>
+        item.id === itemId
+          ? { ...item, name: newName, price: newPrice, quantity: newQuantity }
+          : item
+      )
+    );
   };
 
-  const getDishQuantity = (dishName) => {
-    const dishIndex = order.findIndex((item) => item.name === dishName);
-    if (dishIndex !== -1) {
-      return order[dishIndex].quantity;
-    }
-    return 0; // Return 0 if the dish is not found
+  const addToCart = (item) => {
+    //TODO: implement logic for adding an item to cart
+    console.log('added to cart') + item;
+  };
+
+  const removeFromCart = (itemid) => {
+    //TODO: implement logic for removing an item from cart
+    console.log('reomved from cart' + itemid);
   };
 
   return (
     <CartContext.Provider
-      value={{ order, handleQuantityChange, getDishQuantity }}
+      value={{ cart, handleQuantityChange, addToCart, removeFromCart }}
     >
       {children}
     </CartContext.Provider>
   );
 };
 
-export default CartContext;
+export const useCart = () => useContext(CartContext);

@@ -1,11 +1,10 @@
-import { MdShoppingCart } from "react-icons/md";
-import "./index.css";
-import { useContext } from "react";
-import CartContext from "../context/cartContext";
+import { MdShoppingCart } from 'react-icons/md';
+import './index.css';
+import { useCart } from '../context/cartContext';
 
 const Header = (props) => {
   const { restaurantName } = props;
-  const { order } = useContext(CartContext);
+
   return (
     <nav className="header-container">
       <h1 className="header-name">{restaurantName}</h1>
@@ -13,7 +12,8 @@ const Header = (props) => {
         <p className="header-orders">My Orders</p>
         <MdShoppingCart size="30px" />
         <button className="header-button" type="button">
-          {order}
+          {/* //TODO make changes rendering cartContext */}
+          {0}
         </button>
       </div>
     </nav>
