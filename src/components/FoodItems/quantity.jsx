@@ -9,17 +9,22 @@ const Quantity = (props) => {
 
   const [quantity, setQuantity] = useState(0);
 
+  const { handleQuantityChange, cart, addToCart } = useCart();
+
   const onClickQuantityChange = (action) => {
     let newQuantity = action === 'increase' ? quantity + 1 : quantity - 1;
 
-    // Ensure quantity stays within bounds
     if (newQuantity < 0) newQuantity = 0;
     if (newQuantity > 20) newQuantity = 20;
 
-    // Call handleQuantityChange with the updated quantity and other item details
-    // handleQuantityChange(foodItem.name, foodItem.price, newQuantity);
+    const itemInCart = cart.find((item) => item.id === id);
 
-    // Update local state for display purposes
+    if (!itemInCart) {
+      addToCart({ id, name, price, quantity });
+    } else {
+      handleQuantityChange(id, newQuantity);
+    }
+
     setQuantity(newQuantity);
   };
 

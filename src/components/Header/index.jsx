@@ -4,6 +4,7 @@ import { useCart } from '../context/cartContext';
 
 const Header = (props) => {
   const { restaurantName } = props;
+  const { getTotalQuantity } = useCart();
 
   return (
     <nav className="header-container">
@@ -12,8 +13,7 @@ const Header = (props) => {
         <p className="header-orders">My Orders</p>
         <MdShoppingCart size="30px" />
         <button className="header-button" type="button">
-          {/* //TODO make changes rendering cartContext */}
-          {0}
+          {getTotalQuantity()}
         </button>
       </div>
     </nav>
