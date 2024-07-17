@@ -1,47 +1,56 @@
-import { useState } from "react";
-import Cookies from "js-cookie";
-import "./index.css";
+import { useState } from 'react';
+import Cookies from 'js-cookie';
+import './index.css';
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [status, setStatus] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const authenticateUser = async (event) => {
     event.preventDefault();
     const credentials = { username: userName, password };
-    setUserName("");
-    setPassword("");
     const options = {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(credentials),
     };
     try {
-      const response = await fetch("https://apis.ccbp.in/login", options);
+      const response = await fetch('https://apis.ccbp.in/login', options);
       const data = await response.json();
       if (response.ok) {
-        Cookies.set("jwt_token", data.jwt_token);
+        Cookies.set('jwt_token', data.jwt_token);
+        setMessage('Logged in Sucesssfully');
+        setUserName('');
+        setPassword('');
       } else {
-        setStatus(response.status);
-        setMessage(response.statusText);
+        setMessage('Authentication failure');
       }
     } catch (error) {
-      console.log("LoginAPI: " + error);
+      console.log('LoginAPI: ' + error);
     }
   };
 
-  const renderError = (status, message) => {
-    return <p> {`${status} ${message}`} </p>;
+  const renderError = (message) => {
+    const varClassName =
+      message === 'Logged in Sucesssfully'
+        ? 'success-message'
+        : 'error-message';
+    return <p className={varClassName}> {message} </p>;
+  };
+
+  const onClickShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <div className="login-form-container">
+      <h1 className="login-heading">Login to Restaurant App</h1>
       <form className="login-form" onSubmit={authenticateUser}>
-        <div>
+        <div className="input-container">
           <label htmlFor="UserName" className="input-label">
-            UserName
+            User Name
           </label>
           <input
             id="UserName"
@@ -51,19 +60,29 @@ const Login = () => {
             onChange={(event) => setUserName(event.target.value)}
           />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="Password" className="input-label">
             Password
           </label>
-          <input
-            id="Password"
-            className="input-form"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          <div className="password-container">
+            <input
+              id="Password"
+              className="input-form"
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+
+            <button
+              type="button"
+              onClick={onClickShowPassword}
+              className="show-password"
+            >
+              {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+            </button>
+          </div>
         </div>
-        {renderError(status, message)}
+        {renderError(message)}
         <div className="buttton-container">
           <button className="submit-button" type="submit">
             Log in
