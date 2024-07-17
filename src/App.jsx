@@ -1,6 +1,6 @@
-import "./App.css";
-import Login from "./components/Login";
+import './App.css';
+import Cart from './components/Cart';
 
-const App = () => <Login />;
+const App = () => <Cart />;
 
 export default App;

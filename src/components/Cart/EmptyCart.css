@@ -1,0 +1,18 @@
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empty-cart-image {
+  height: 400px;
+}
+
+.empty-cart-button {
+  border: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: 'Roboto';
+  background-color: #c0e7ec;
+}
