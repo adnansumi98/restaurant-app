@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useCart } from '../context/cartContext';
+import { useState } from "react";
+import { useCart } from "../context/cartContext";
 
 const Quantity = (props) => {
   const { foodItem } = props;
@@ -9,10 +9,10 @@ const Quantity = (props) => {
 
   const [quantity, setQuantity] = useState(0);
 
-  const { handleQuantityChange, cart, addToCart } = useCart();
+  const { handleQuantityChange, cart, addToCart, removeFromCart } = useCart();
 
   const onClickQuantityChange = (action) => {
-    let newQuantity = action === 'increase' ? quantity + 1 : quantity - 1;
+    let newQuantity = action === "increase" ? quantity + 1 : quantity - 1;
 
     if (newQuantity < 0) newQuantity = 0;
     if (newQuantity > 20) newQuantity = 20;
@@ -24,6 +24,10 @@ const Quantity = (props) => {
     } else {
       handleQuantityChange(id, newQuantity);
     }
+    // removes the item from cart when Quantity becomes zero
+    if (newQuantity === 0) {
+      removeFromCart(id);
+    }
 
     setQuantity(newQuantity);
   };
@@ -33,7 +37,7 @@ const Quantity = (props) => {
       <button
         type="button"
         className="quantity-button"
-        onClick={() => onClickQuantityChange('decrease')}
+        onClick={() => onClickQuantityChange("decrease")}
       >
         -
       </button>
@@ -41,7 +45,7 @@ const Quantity = (props) => {
       <button
         className="quantity-button"
         type="button"
-        onClick={() => onClickQuantityChange('increase')}
+        onClick={() => onClickQuantityChange("increase")}
       >
         +
       </button>
