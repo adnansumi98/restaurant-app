@@ -1,19 +1,21 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const CartContext = createContext();
+
+export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    console.log("Cart updated:", cart);
+    console.log('Cart updated:', cart);
   }, [cart]);
 
   const handleQuantityChange = (itemId, newQuantity) => {
     setCart(
       cart.map((item) =>
-        item.id === itemId ? { ...item, quantity: newQuantity } : item,
-      ),
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      )
     );
   };
 
@@ -53,5 +55,3 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => useContext(CartContext);

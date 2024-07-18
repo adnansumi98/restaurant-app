@@ -8,12 +8,12 @@
   font-family: 'Roboto';
 }
 .login-heading {
-  font-size: 20px;
+  font-size: 26px;
   color: #314a4b;
 }
 .login-form {
-  background-color: #eeeeee;
-  padding: 20px;
+  background-color: #d6fad3;
+  padding: 40px;
   border-radius: 10px;
 }
 .input-container {
@@ -56,6 +56,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-right: 30px;
 }
 .submit-button {
   border: transparent;
@@ -63,5 +64,6 @@
   padding: 10px;
   font-size: 14px;
   font-family: 'Roboto';
-  background-color: #58ecff;
+  background-color: #0c6d0c;
+  color: #fff;
 }

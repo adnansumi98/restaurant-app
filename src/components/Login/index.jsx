@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './index.css';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
@@ -8,6 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
+
+  const navigate = useNavigate();
 
   const authenticateUser = async (event) => {
     event.preventDefault();
@@ -24,6 +27,7 @@ const Login = () => {
         setMessage('Logged in Sucesssfully');
         setUserName('');
         setPassword('');
+        navigate('/');
       } else {
         setMessage('Authentication failure');
       }
