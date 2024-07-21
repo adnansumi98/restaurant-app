@@ -38,6 +38,10 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + item.quantity * item.price, 0);
   };
 
+  const EmptyCartItem = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -47,6 +51,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         getTotalQuantity,
         getTotalPrice,
+        EmptyCartItem,
       }}
     >
       {children}

@@ -30,6 +30,7 @@
   position: relative;
   bottom: 10px;
   right: 10px;
+  font-weight: 600;
 }
 .header-name-button {
   background-color: transparent;
@@ -51,6 +52,7 @@
 }
 
 .logout-button {
+  box-sizing: border-box;
   border: transparent;
   background-color: #fad3d7;
   font-family: 'Roboto';
@@ -61,6 +63,10 @@
   border-radius: 5px;
 }
 
+.logout-button:hover {
+  font-weight: 600;
+}
+
 .header-order-button {
   display: flex;
   flex-direction: row;
@@ -69,4 +75,7 @@
   border: transparent;
   background-color: transparent;
   cursor: pointer;
+}
+.header-order-button:hover {
+  font-weight: 600;
 }

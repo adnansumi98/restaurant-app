@@ -1,6 +1,17 @@
 .notfound-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.notfound-button {
+  background-color: #60f0c0;
+  border: transparent;
+  color: #000;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.notfound-button:hover {
+  font-weight: 600;
 }

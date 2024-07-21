@@ -1,0 +1,18 @@
+.emptycart-item {
+  position: relative;
+  left: 90vw;
+  border: transparent;
+  background-color: #eb3a3a;
+  color: #fff;
+  font-family: 'Roboto';
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.emptycart-item:hover {
+  font-weight: 600;
+}
+
+.popup-button {
+  margin: 10px;
+}

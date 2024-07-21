@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const onClickLogout = () => {
     Cookies.remove('jwt_token');
-    navigate('login');
+    navigate('/login');
   };
   const onClickRestaurentName = () => navigate('/');
   const onClickCart = () => navigate('/cart');
