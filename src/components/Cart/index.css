@@ -16,3 +16,9 @@
 .popup-button {
   margin: 10px;
 }
+
+@media (max-width: 768px) {
+  .emptycart-item {
+    left: 75vw;
+  }
+}

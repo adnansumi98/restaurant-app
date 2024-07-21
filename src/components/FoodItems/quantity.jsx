@@ -21,9 +21,9 @@ const Quantity = (props) => {
     if (newQuantity > 20) newQuantity = 20;
 
     const itemInCart = cart.find((item) => item.id === id);
-
+    setQuantity(newQuantity);
     if (!itemInCart) {
-      addToCart({ id, name, price, quantity, image });
+      addToCart({ id, name, price, quantity: 1, image });
     } else {
       handleQuantityChange(id, newQuantity);
     }
@@ -31,8 +31,6 @@ const Quantity = (props) => {
     if (newQuantity === 0) {
       removeFromCart(id);
     }
-
-    setQuantity(newQuantity);
   };
 
   return (

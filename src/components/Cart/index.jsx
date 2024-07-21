@@ -24,7 +24,7 @@ const Cart = () => {
             Remove All
           </button>
         }
-        position="left center"
+        position="bottom right "
       >
         <div>Are you sure you want to remove all item from cart?</div>
         <button
@@ -34,7 +34,7 @@ const Cart = () => {
         >
           ok
         </button>
-        <p>click outside to close</p>
+        <p>click outside to close popup</p>
       </Popup>
     );
   };
