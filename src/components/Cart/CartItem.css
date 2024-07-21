@@ -1,4 +1,4 @@
-.CartItem-container {
+.cartItem-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -7,6 +7,7 @@
   border: solid 3px #afafaf;
   border-radius: 10px;
   margin: 10px;
+  padding-right: 10px;
 }
 
 .CartItem-list {
@@ -16,30 +17,42 @@
 .cartitem {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   min-width: 80vw;
   justify-content: space-evenly;
   border: solid 2px #afafaf;
   border-radius: 10px;
   margin-bottom: 10px;
+  padding: 10px;
+}
+
+.cartitem-total {
+  font-size: 15px;
+  min-width: 100px;
+  font-weight: 600;
 }
 .cartitem-image {
   width: 75px;
   height: 75px;
 }
 .cartitem-name {
+  box-sizing: border-box;
   font-family: 'Roboto';
   font-size: 16px;
-  flex-grow: 2;
+  flex-grow: 1;
   margin-left: 20px;
+  width: 20vw;
+  min-width: 20vw;
+  max-width: 20vw;
+  text-align: start;
 }
 
-.quantity-container {
+.quantity-container-cart {
   display: flex;
   flex-direction: row;
-  min-width: 8vw;
-  max-height: 5vh;
-  position: relative;
-  top: 10px;
+  min-width: 10vw;
+  max-width: 10vw;
   justify-content: space-between;
   align-items: center;
   margin-right: 20px;
@@ -47,12 +60,15 @@
   border-radius: 25px;
   padding-left: 10px;
   padding-right: 10px;
+  max-height: 35px;
 }
 .quantity {
   font-size: 16px;
   font-family: 'Roboto';
   color: #fff;
   vertical-align: center;
+  width: 30px;
+  text-align: center;
 }
 .quantity-control {
   height: 40px;
@@ -63,9 +79,8 @@
   font-size: 28px;
   max-height: 5vh;
   line-height: 0px;
-  position: relative;
-  bottom: 3px;
   cursor: pointer;
+  position: inherit;
 }
 
 .delete-control {
@@ -74,7 +89,78 @@
   max-height: 5vh;
   color: #c44043;
   cursor: pointer;
+  position: relative;
+  bottom: 10px;
   padding: 5px;
   margin-right: 10px;
   margin-top: 5px;
+}
+
+.cartitem-price {
+  font-size: 14px;
+  min-width: 100px;
+  width: 130px;
+}
+
+.Total-price {
+  position: relative;
+  left: 40vw;
+  font-size: 18px;
+  border: solid 2px #747474;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .Total-price {
+    left: 30vw;
+    font-size: 16px;
+  }
+  .cartitem-total {
+    font-size: 13px;
+    max-width: 50px;
+  }
+  .cartitem-image {
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+  }
+  .cartitem-name {
+    font-size: 13px;
+    margin-left: 5px;
+    max-width: 25vw;
+    min-width: 25vw;
+  }
+  .quantity-container-cart {
+    font-size: 13px;
+    min-width: 20vw;
+    max-width: 20vw;
+    margin-left: 10px;
+  }
+  .cartitem-price {
+    font-size: 13px;
+    max-width: 20px;
+    min-width: 20px;
+    margin-right: 10px;
+  }
+  .cartitem-total {
+    max-width: 20px;
+    min-width: 20px;
+  }
+  .cartitem {
+    min-width: 90vw;
+    max-width: 90vw;
+    font-size: 13px;
+    padding-left: 30px;
+  }
+  .cartItem-container {
+    padding-left: 0px;
+  }
+  .CartItem-list {
+    position: relative;
+    right: 15px;
+  }
 }

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Header from '../Header';
 import Category from '../Category';
 import FoodItems from '../FoodItems';
-import { CartProvider } from '../context/cartContext';
 import { NameContext } from '../context/nameContext';
 import { useContext } from 'react';
 
@@ -51,21 +50,19 @@ const Home = () => {
   };
 
   return (
-    <CartProvider>
-      <div>
-        <Header />
-        <Category
-          categories={category}
-          setCategoryFunction={onClickCategory}
-          selectedCategory={selectedCategory}
-        />
-        <FoodItems
-          foodItems={foodItems}
-          isLoading={isLoading}
-          selectedCategory={selectedCategory}
-        />
-      </div>
-    </CartProvider>
+    <div>
+      <Header />
+      <Category
+        categories={category}
+        setCategoryFunction={onClickCategory}
+        selectedCategory={selectedCategory}
+      />
+      <FoodItems
+        foodItems={foodItems}
+        isLoading={isLoading}
+        selectedCategory={selectedCategory}
+      />
+    </div>
   );
 };
 

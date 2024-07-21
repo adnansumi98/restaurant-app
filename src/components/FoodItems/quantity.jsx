@@ -10,8 +10,9 @@ const Quantity = (props) => {
   const image = foodItem.dish_image;
 
   const [quantity, setQuantity] = useState(0);
-  const useCart = () => useContext(CartContext);
-  const { handleQuantityChange, cart, addToCart, removeFromCart } = useCart();
+
+  const { handleQuantityChange, cart, addToCart, removeFromCart } =
+    useContext(CartContext);
 
   const onClickQuantityChange = (action) => {
     let newQuantity = action === 'increase' ? quantity + 1 : quantity - 1;

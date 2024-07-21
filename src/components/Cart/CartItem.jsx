@@ -1,17 +1,18 @@
-import './CartItem.css';
 import { MdOutlineDelete } from 'react-icons/md';
 import { CartContext } from '../context/cartContext';
 import { useContext } from 'react';
 
+import './CartItem.css';
+
 const CartItem = (props) => {
   const { cartItems } = props;
-  const useCart = useContext(CartContext);
-  const { handleQuantityChange, removeFromCart } = useCart();
+  const { handleQuantityChange, removeFromCart, getTotalPrice } =
+    useContext(CartContext);
 
   const onClickQuantityChange = (action, id, quantity) => {
     let newQuantity = action === 'increase' ? quantity + 1 : quantity - 1;
 
-    if (newQuantity < 0) newQuantity = 0;
+    if (newQuantity < 1) newQuantity = 1;
     if (newQuantity > 20) newQuantity = 20;
 
     handleQuantityChange(id, newQuantity);
@@ -23,13 +24,17 @@ const CartItem = (props) => {
   };
 
   return (
-    <div className="CartItem-container">
+    <div className="cartItem-container">
       <ul className="CartItem-list">
         {cartItems.map((each) => (
           <li className="cartitem" key={each.id}>
-            <img src="" alt={each.name} className="cartitem-image" />
+            <img src={each.image} alt={each.name} className="cartitem-image" />
             <p className="cartitem-name">{each.name}</p>
-            <div className="quantity-container">
+            <p className="cartitem-price">
+              SAR
+              <br /> {each.price.toFixed(2)}
+            </p>
+            <div className="quantity-container-cart">
               <button
                 className="quantity-control"
                 type="button"
@@ -50,6 +55,13 @@ const CartItem = (props) => {
                 +
               </button>
             </div>
+            <p className="cartitem-price">
+              {'Total '}
+              <br />
+              <span className="cartitem-total ">
+                {'SAR ' + (each.price * each.quantity).toFixed(2)}
+              </span>
+            </p>
             <button
               className="delete-control"
               type="button"
@@ -60,6 +72,10 @@ const CartItem = (props) => {
           </li>
         ))}
       </ul>
+      <div className="Total-price">
+        Total Price <br />
+        {'SAR ' + getTotalPrice().toFixed(2)}
+      </div>
     </div>
   );
 };

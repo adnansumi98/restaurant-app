@@ -45,7 +45,10 @@ const FoodItems = (props) => {
                     type={foodItem.dish_Type}
                     className="foodtype-container"
                   >
-                    <FoodTypeButton type={foodItem.dish_Type} />
+                    <FoodTypeButton
+                      type={foodItem.dish_Type}
+                      className="food-mark"
+                    />
                   </FoodTypeContainer>
                   <div className="food-details-container">
                     <h1 className="food-name">{foodItem.dish_name}</h1>

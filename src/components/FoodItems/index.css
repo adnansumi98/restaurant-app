@@ -12,7 +12,6 @@
 .food-mark {
   border: transparent;
   align-self: flex-start;
-  position: relative;
   padding: 10px;
 }
 
@@ -51,7 +50,8 @@
   flex-direction: row;
   background-color: #2c9716;
   border-radius: 25px;
-  width: 25%;
+  max-width: 30%;
+  min-width: 30%;
   height: 30px;
   justify-content: space-evenly;
   align-items: center;
@@ -124,18 +124,16 @@
 
 @media (max-width: 768px) {
   .food-details-container {
-    min-width: 50vw;
+    min-width: 40vw;
   }
 
   .quantity-container {
-    width: 70%;
+    min-width: 70%;
   }
 
   .food-images {
-    height: 100px;
-    width: 100px;
-    position: relative;
-    right: 20px;
+    width: 80px;
+    height: 90px;
   }
 
   .food-description {
@@ -143,7 +141,10 @@
   }
 
   .food-item-container {
-    margin-left: 20px;
+    margin-left: 10px;
+  }
+  .food-calories {
+    margin-right: 10px;
   }
 }
 

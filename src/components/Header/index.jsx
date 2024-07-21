@@ -9,7 +9,7 @@ import { CartContext } from '../context/cartContext';
 const Header = () => {
   const { getTotalQuantity } = useContext(CartContext);
   const { restaurantName } = useContext(NameContext);
-  console.log(restaurantName);
+  // console.log(restaurantName);
 
   const navigate = useNavigate();
   const onClickLogout = () => {
