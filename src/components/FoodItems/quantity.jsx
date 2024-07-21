@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useCart } from '../context/cartContext';
+import { CartContext } from '../context/cartContext';
+import { useContext } from 'react';
 
 const Quantity = (props) => {
   const { foodItem } = props;
@@ -9,7 +10,7 @@ const Quantity = (props) => {
   const image = foodItem.dish_image;
 
   const [quantity, setQuantity] = useState(0);
-
+  const useCart = () => useContext(CartContext);
   const { handleQuantityChange, cart, addToCart, removeFromCart } = useCart();
 
   const onClickQuantityChange = (action) => {

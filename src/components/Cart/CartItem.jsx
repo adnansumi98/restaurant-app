@@ -1,10 +1,11 @@
 import './CartItem.css';
 import { MdOutlineDelete } from 'react-icons/md';
-import { useCart } from '../context/cartContext';
+import { CartContext } from '../context/cartContext';
+import { useContext } from 'react';
 
 const CartItem = (props) => {
   const { cartItems } = props;
-
+  const useCart = useContext(CartContext);
   const { handleQuantityChange, removeFromCart } = useCart();
 
   const onClickQuantityChange = (action, id, quantity) => {

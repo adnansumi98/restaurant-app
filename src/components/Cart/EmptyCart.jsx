@@ -8,11 +8,11 @@ const EmptyCart = () => (
       src="../../../public/emptyCart.png"
       alt="Empty Cart"
     />
-    {/* <Link to="/"> */}
-    <button className="empty-cart-button" type="button">
-      Menu
-    </button>
-    {/* </Link> */}
+    <Link to="/">
+      <button className="empty-cart-button" type="button">
+        Menu
+      </button>
+    </Link>
   </div>
 );
 

@@ -1,23 +1,12 @@
-import { createContext } from 'react';
-import { useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
-const NameContext = createContext();
-
-export const useName = () => {
-  const context = useContext(NameContext);
-  console.log(context);
-  return context;
-};
+export const NameContext = createContext();
 
 export const NameProvider = ({ children }) => {
   const [restaurantName, setRestaurantName] = useState('');
 
-  const handleRestaurantNameChange = (name) => setRestaurantName(name);
-
   return (
-    <NameContext.Provider
-      value={{ restaurantName, handleRestaurantNameChange }}
-    >
+    <NameContext.Provider value={{ restaurantName, setRestaurantName }}>
       {children}
     </NameContext.Provider>
   );
